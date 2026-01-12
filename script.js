@@ -210,3 +210,35 @@ document.addEventListener('keydown', function (event) {
         }
     }
 });
+
+
+// ========== EK LOGO INTERACTIVE ==========
+
+const ekLogo = document.getElementById('ekLogo');
+
+if (ekLogo) {
+    const container = ekLogo.parentElement;
+    
+    // Mouse move tracking with tilt effect
+    document.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        // Calculate distance from center
+        const deltaX = (e.clientX - centerX) / rect.width;
+        const deltaY = (e.clientY - centerY) / rect.height;
+        
+        // Tilt in opposite direction (reverse mouse movement)
+        const tiltX = -deltaY * 5; // Max 5 degrees
+        const tiltY = deltaX * 5;
+        
+        // Apply transform with smooth transition
+        ekLogo.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+    });
+    
+    // Reset on mouse leave
+    container.addEventListener('mouseleave', () => {
+        ekLogo.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    });
+}
