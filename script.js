@@ -253,3 +253,137 @@ if (ekLogo) {
         ekLogo.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
     });
 }
+
+
+// ========== CONTACT FORM FUNCTIONALITY ==========
+
+// Copy Email to Clipboard
+function copyEmail() {
+    const email = 'hello@kuzeyeskiar.com.tr';
+    navigator.clipboard.writeText(email).then(() => {
+        const copyBtn = document.querySelector('.copy-btn');
+        const icon = copyBtn.querySelector('i');
+
+        // Visual feedback
+        copyBtn.classList.add('copied');
+        icon.classList.remove('fa-copy');
+        icon.classList.add('fa-check');
+
+        // Reset after 2 seconds
+        setTimeout(() => {
+            copyBtn.classList.remove('copied');
+            icon.classList.remove('fa-check');
+            icon.classList.add('fa-copy');
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy email:', err);
+    });
+}
+
+// Form Validation & Submission
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Get form elements
+        const nameInput = document.getElementById('contactName');
+        const emailInput = document.getElementById('contactEmail');
+        const messageInput = document.getElementById('contactMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+
+        // Clear previous errors
+        clearErrors();
+
+        // Validate
+        let isValid = true;
+
+        if (!nameInput.value.trim()) {
+            showError('nameError', 'Please enter your name');
+            nameInput.classList.add('error');
+            isValid = false;
+        }
+
+        if (!emailInput.value.trim()) {
+            showError('emailError', 'Please enter your email');
+            emailInput.classList.add('error');
+            isValid = false;
+        } else if (!isValidEmail(emailInput.value)) {
+            showError('emailError', 'Please enter a valid email');
+            emailInput.classList.add('error');
+            isValid = false;
+        }
+
+        if (!messageInput.value.trim()) {
+            showError('messageError', 'Please enter your message');
+            messageInput.classList.add('error');
+            isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // Show loading state
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline-flex';
+        submitBtn.disabled = true;
+
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Success
+                contactForm.style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'flex';
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            console.error('Form error:', error);
+            contactForm.style.display = 'none';
+            document.getElementById('formError').style.display = 'flex';
+        } finally {
+            // Reset button
+            btnText.style.display = 'inline-flex';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    });
+
+    // Remove error state on input
+    const formInputs = contactForm.querySelectorAll('input, textarea');
+    formInputs.forEach(input => {
+        input.addEventListener('input', function () {
+            this.classList.remove('error');
+            const errorId = this.id.replace('contact', '').replace('Name', 'name').replace('Email', 'email').replace('Message', 'message') + 'Error';
+            const errorSpan = document.getElementById(errorId);
+            if (errorSpan) errorSpan.textContent = '';
+        });
+    });
+}
+
+function showError(elementId, message) {
+    const errorSpan = document.getElementById(elementId);
+    if (errorSpan) errorSpan.textContent = message;
+}
+
+function clearErrors() {
+    const errorSpans = document.querySelectorAll('.error-message');
+    errorSpans.forEach(span => span.textContent = '');
+
+    const errorInputs = document.querySelectorAll('.error');
+    errorInputs.forEach(input => input.classList.remove('error'));
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
