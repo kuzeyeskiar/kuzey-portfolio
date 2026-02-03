@@ -94,9 +94,9 @@ const projectData = {
         title: 'Aurora Creative',
         subtitle: 'Brand Identity Design',
         category: 'Brand Design',
-        year: '2024',
+        year: '2025',
         role: 'Lead Designer',
-        duration: '4 weeks',
+        duration: '1 week',
         tools: ['Illustrator', 'Photoshop', 'Blender', 'Figma'],
 
         // Case Study Content
@@ -126,9 +126,9 @@ const projectData = {
         title: 'JoySphere Entertainment Park',
         subtitle: 'Complete Brand Identity',
         category: 'Brand Identity',
-        year: '2024',
+        year: '2025',
         role: 'Brand Designer',
-        duration: '6 weeks',
+        duration: '1 week',
         tools: ['Procreate', 'Illustrator', 'Photoshop', 'After Effects', 'Blender'],
 
         problem: 'JoySphere, a new entertainment center, needed a playful yet professional brand identity that would appeal to families while maintaining a premium feel.',
@@ -157,9 +157,9 @@ const projectData = {
         title: 'Abstract Illustrations',
         subtitle: 'Experimental Art Series',
         category: 'Illustration',
-        year: '2023',
+        year: '2025',
         role: 'Illustrator',
-        duration: 'Ongoing',
+        duration: '1 week',
         tools: ['Procreate', 'Photoshop', 'After Effects', 'Blender'],
 
         problem: 'Rather than communicating a specific message, this personal project explored capturing emotions through color and form.',
@@ -189,15 +189,10 @@ let currentImages = [];
 let currentLightboxIndex = 0;
 
 function openProjectModal(projectId) {
-    console.log('openProjectModal called with:', projectId);
     const modal = document.getElementById('projectModal');
     const project = projectData[projectId];
 
-    console.log('Modal element:', modal);
-    console.log('Project data:', project);
-
     if (!project) {
-        console.error('Project not found:', projectId);
         return;
     }
 
