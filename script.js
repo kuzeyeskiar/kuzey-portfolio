@@ -3,7 +3,14 @@ let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
 menuIcon.onclick = () => {
-    menuIcon.classList.toggle('fa-xmark');
+    const icon = menuIcon.querySelector('i');
+    if (icon.classList.contains('fa-bars')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
+    } else {
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+    }
     navbar.classList.toggle('active');
 };
 
@@ -31,7 +38,11 @@ window.onscroll = () => {
     header.classList.toggle('sticky', window.scrollY > 100);
 
     /* Remove toggle icon and navbar when click navbar link (scroll) */
-    menuIcon.classList.remove('fa-xmark');
+    const icon = menuIcon.querySelector('i');
+    if (icon) {
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+    }
     navbar.classList.remove('active');
 };
 
@@ -218,25 +229,25 @@ const ekLogo = document.getElementById('ekLogo');
 
 if (ekLogo) {
     const container = ekLogo.parentElement;
-    
+
     // Mouse move tracking with tilt effect
     document.addEventListener('mousemove', (e) => {
         const rect = container.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        
+
         // Calculate distance from center
         const deltaX = (e.clientX - centerX) / rect.width;
         const deltaY = (e.clientY - centerY) / rect.height;
-        
+
         // Tilt in opposite direction (reverse mouse movement)
         const tiltX = -deltaY * 5; // Max 5 degrees
         const tiltY = deltaX * 5;
-        
+
         // Apply transform with smooth transition
         ekLogo.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
     });
-    
+
     // Reset on mouse leave
     container.addEventListener('mouseleave', () => {
         ekLogo.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
