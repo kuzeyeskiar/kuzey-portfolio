@@ -2,38 +2,40 @@
 <html lang="en">
 
 <head> <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1X782R7CGN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-1X782R7CGN');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1X782R7CGN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1X782R7CGN');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eren Kuzey Eskiar | Digital Portfolio</title>
-    
-<!-- SEO Meta Tags -->
-<meta name="keywords" content="motion design, 3d artist, visual storytelling, portfolio, graphic design, animation">
-<meta name="author" content="Eren Kuzey Eskiar">
-<meta name="robots" content="index, follow">
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://kuzeyeskiar.com.tr/">
-<meta property="og:title" content="Eren Kuzey Eskiar - Motion Designer & 3D Artist">
-<meta property="og:description" content="Interactive digital portfolio showcasing creative motion design and 3D art projects.">
-<meta property="og:image" content="https://kuzeyeskiar.com.tr/projects/aurora/aurora_1.png">
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="motion design, 3d artist, visual storytelling, portfolio, graphic design, animation">
+    <meta name="author" content="Eren Kuzey Eskiar">
+    <meta name="robots" content="index, follow">
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://kuzeyeskiar.com.tr/">
-<meta property="twitter:title" content="Eren Kuzey Eskiar - Motion Designer & 3D Artist">
-<meta property="twitter:description" content="Interactive digital portfolio showcasing creative motion design and 3D art projects.">
-<meta property="twitter:image" content="https://kuzeyeskiar.com.tr/projects/aurora/aurora_1.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kuzeyeskiar.com.tr/">
+    <meta property="og:title" content="Eren Kuzey Eskiar - Motion Designer & 3D Artist">
+    <meta property="og:description"
+        content="Interactive digital portfolio showcasing creative motion design and 3D art projects.">
+    <meta property="og:image" content="https://kuzeyeskiar.com.tr/projects/aurora/aurora_1.png">
 
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="favicon.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kuzeyeskiar.com.tr/">
+    <meta property="twitter:title" content="Eren Kuzey Eskiar - Motion Designer & 3D Artist">
+    <meta property="twitter:description"
+        content="Interactive digital portfolio showcasing creative motion design and 3D art projects.">
+    <meta property="twitter:image" content="https://kuzeyeskiar.com.tr/projects/aurora/aurora_1.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
 
     <meta name="description" content="Portfolio of Eren Kuzey Eskiar - Motion Designer & 3D Artist." />
 
@@ -59,6 +61,7 @@
         <nav class="navbar">
             <a href="#hero" class="active">Home</a>
             <a href="#about">About</a>
+            <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -67,30 +70,49 @@
     </header>
 
     <section class="hero" id="hero">
+        <!-- Floating Orbs Background -->
+        <div class="hero-bg-effects">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+            <div class="grid-overlay"></div>
+        </div>
+
         <div class="hero-content">
-            <h3 class="animate-text">Hello, It's Me</h3>
-            <h1 class="animate-text">Eren Kuzey Eskiar</h1>
+            <div class="status-badge animate-text">
+                <span class="status-dot"></span>
+                Open to Work
+            </div>
+            <h3 class="animate-text">Hello, I'm</h3>
+            <h1 class="gradient-text animate-text">Eren Kuzey Eskiar</h1>
             <h3 class="animate-text">And I'm a <span class="multiple-text"></span></h3>
             <p class="animate-text">Transforming ideas into high-impact motion graphics and immersive 3D realities.
                 Bringing static concepts to life through motion and depth.</p>
             <div class="social-media animate-text">
-                <a href="https://www.instagram.com/kuzeyeskiarr/" target="_blank"><i
+                <a href="https://www.instagram.com/kuzeyeskiarr/" target="_blank" aria-label="Instagram"><i
                         class="fa-brands fa-instagram"></i></a>
-                <a href="https://heyzine.com/flip-book/7ad092203a.html" target="_blank"><i
+                <a href="https://heyzine.com/flip-book/7ad092203a.html" target="_blank" aria-label="Portfolio"><i
                         class="fa-solid fa-book-open"></i></a>
-                <!-- Added a generic mail icon if they want to use it later -->
-                <a href="#contact"><i class="fa-solid fa-envelope"></i></a>
-<a href="https://www.linkedin.com/in/eren-kuzey-eskiar-05b82b205" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#contact" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/eren-kuzey-eskiar-05b82b205" target="_blank"
+                    aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
             </div>
-            <a href="https://heyzine.com/flip-book/7ad092203a.html" target="_blank" class="btn animate-text">View Full
-                Portfolio</a>
+            <div class="hero-cta animate-text">
+                <a href="https://heyzine.com/flip-book/7ad092203a.html" target="_blank" class="btn btn-primary">
+                    <i class="fa-solid fa-folder-open"></i> View Portfolio
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fa-solid fa-paper-plane"></i> Get in Touch
+                </a>
+            </div>
         </div>
 
         <div class="hero-img animate-text">
-            <!-- Placeholder for a user image or abstract graphic. Using a generated abstract shape via CSS in style.css or an image path if available. For now, empty container for CSS styling. -->
-          <div class="ek-logo-container">
-    <img src="ek-logo.png" alt="EK Logo" class="ek-logo" id="ekLogo">
-</div>
+            <div class="ek-logo-container">
+                <div class="logo-glow"></div>
+                <img src="ek-logo.png" alt="EK Logo" class="ek-logo" id="ekLogo">
+            </div>
+        </div>
     </section>
 
     <section class="about" id="about">
@@ -132,6 +154,57 @@
                 </div>
                 <!-- Link 'Read More' to the portfolio or about section in portfolio -->
                 <a href="https://heyzine.com/flip-book/7ad092203a.html" target="_blank" class="btn">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Tools Section -->
+    <section class="skills" id="skills">
+        <h2 class="heading">Skills & <span>Tools</span></h2>
+        <p class="section-subtitle">Software and technologies I work with</p>
+
+        <div class="skills-container">
+            <div class="skill-card hidden">
+                <div class="skill-icon">
+                    <i class="fa-solid fa-cube"></i>
+                </div>
+                <h4>Blender</h4>
+                <p>3D Modeling</p>
+            </div>
+            <div class="skill-card hidden">
+                <div class="skill-icon">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h4>After Effects</h4>
+                <p>Motion Design</p>
+            </div>
+            <div class="skill-card hidden">
+                <div class="skill-icon">
+                    <i class="fa-solid fa-video"></i>
+                </div>
+                <h4>Cinema 4D</h4>
+                <p>3D Animation</p>
+            </div>
+            <div class="skill-card hidden">
+                <div class="skill-icon">
+                    <i class="fa-solid fa-image"></i>
+                </div>
+                <h4>Photoshop</h4>
+                <p>Image Editing</p>
+            </div>
+            <div class="skill-card hidden">
+                <div class="skill-icon">
+                    <i class="fa-solid fa-pen-nib"></i>
+                </div>
+                <h4>Illustrator</h4>
+                <p>Vector Design</p>
+            </div>
+            <div class="skill-card hidden">
+                <div class="skill-icon">
+                    <i class="fa-solid fa-film"></i>
+                </div>
+                <h4>Premiere Pro</h4>
+                <p>Video Editing</p>
             </div>
         </div>
     </section>
@@ -237,6 +310,3 @@
 
 
 </html>
-
-
-
