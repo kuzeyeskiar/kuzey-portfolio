@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head> <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1X782R7CGN"></script>
@@ -52,10 +52,13 @@
 </head>
 
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#hero" class="skip-link">Skip to main content</a>
+
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
 
-    <header class="header">
+    <header class="header" role="banner">
         <a href="#" class="logo">EREN KUZEY.</a>
 
         <nav class="navbar">
@@ -298,12 +301,12 @@
         </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="footer-text">
             <p>Copyright &copy; 2026 by Eren Kuzey Eskiar | All Rights Reserved.</p>
         </div>
         <div class="footer-iconTop">
-            <a href="#hero"><i class="fa-solid fa-angle-up"></i></a>
+            <a href="#hero" aria-label="Back to top"><i class="fa-solid fa-angle-up"></i></a>
         </div>
     </footer>
 
