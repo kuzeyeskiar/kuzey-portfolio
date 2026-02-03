@@ -189,10 +189,17 @@ let currentImages = [];
 let currentLightboxIndex = 0;
 
 function openProjectModal(projectId) {
+    console.log('openProjectModal called with:', projectId);
     const modal = document.getElementById('projectModal');
     const project = projectData[projectId];
 
-    if (!project) return;
+    console.log('Modal element:', modal);
+    console.log('Project data:', project);
+
+    if (!project) {
+        console.error('Project not found:', projectId);
+        return;
+    }
 
     currentProject = projectId;
     currentImages = project.images;
