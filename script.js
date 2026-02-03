@@ -90,26 +90,92 @@ const typed = new Typed('.multiple-text', {
 /* Project Modal & Lightbox Functionality */
 const projectData = {
     aurora: {
+        slug: 'aurora',
         title: 'Aurora Creative',
-        description: 'Complete brand identity design for a creative studio including logo, stationery, and social media assets.',
+        subtitle: 'Brand Identity Design',
+        category: 'Brand Design',
+        year: '2024',
+        role: 'Lead Designer',
+        duration: '4 weeks',
+        tools: ['Illustrator', 'Photoshop', 'Blender', 'Figma'],
+
+        // Case Study Content
+        problem: 'Aurora Creative, a rising creative studio, needed a cohesive and modern brand identity that would stand out in the competitive design industry while reflecting their innovative approach.',
+
+        goal: 'Create a complete visual identity system including logo, typography, color palette, stationery design, and brand guidelines that capture the essence of creativity and professionalism.',
+
+        process: 'Started with extensive research and mood boards, then developed logo concepts focusing on geometric forms. Used Illustrator for vector work, Photoshop for mockups and presentations, and Blender for 3D product mockups showing stationery applications.',
+
+        deliverables: [
+            { type: 'image', src: 'projects/aurora/aurora_1.png', caption: 'Logo Design & Variations' },
+            { type: 'image', src: 'projects/aurora/aurora_2.jpg', caption: 'Brand Stationery Set' },
+            { type: 'image', src: 'projects/aurora/aurora_3.png', caption: 'Brand Guidelines' }
+        ],
+
+        outcome: 'Delivered a complete brand identity system that elevated Aurora Creative\'s market positioning. The modern, versatile design system proved highly adaptable across digital and print applications.',
+
         images: [
             'projects/aurora/aurora_1.png',
             'projects/aurora/aurora_2.jpg',
             'projects/aurora/aurora_3.png'
         ]
     },
+
     joysphere: {
+        slug: 'joysphere',
         title: 'JoySphere Entertainment Park',
-        description: 'Full brand identity design for an amusement park including logo design, character mascots, park map, signage system, and promotional materials.',
+        subtitle: 'Complete Brand Identity',
+        category: 'Brand Identity',
+        year: '2024',
+        role: 'Brand Designer',
+        duration: '6 weeks',
+        tools: ['Procreate', 'Illustrator', 'Photoshop', 'After Effects', 'Blender'],
+
+        problem: 'JoySphere, a new entertainment center, needed a playful yet professional brand identity that would appeal to families while maintaining a premium feel.',
+
+        goal: 'Design a complete brand system including logo, character mascots, signage system, promotional materials, and motion graphics for social media.',
+
+        process: 'Started with character sketches in Procreate, then vectorized in Illustrator. Created the full icon set and pattern library. Used Photoshop for signage and packaging mockups, After Effects for motion posts, and Blender for 3D scene renders.',
+
+        deliverables: [
+            { type: 'image', src: 'projects/joysphere/joysphere_1.png', caption: 'Logo & Character Mascot' },
+            { type: 'image', src: 'projects/joysphere/joysphere_2.png', caption: 'Signage System' },
+            { type: 'image', src: 'projects/joysphere/joysphere_3.png', caption: 'Promotional Materials' }
+        ],
+
+        outcome: 'Created a vibrant, cohesive brand identity that brings joy to visitors from the moment they see the signage. The character mascots became instantly recognizable and the motion graphics increased social media engagement.',
+
         images: [
             'projects/joysphere/joysphere_1.png',
             'projects/joysphere/joysphere_2.png',
             'projects/joysphere/joysphere_3.png'
         ]
     },
+
     illustrations: {
+        slug: 'illustrations',
         title: 'Abstract Illustrations',
-        description: 'A series of organic abstract illustrations created with ink and watercolor techniques, exploring fluid forms and natural textures.',
+        subtitle: 'Experimental Art Series',
+        category: 'Illustration',
+        year: '2023',
+        role: 'Illustrator',
+        duration: 'Ongoing',
+        tools: ['Procreate', 'Photoshop', 'After Effects', 'Blender'],
+
+        problem: 'Rather than communicating a specific message, this personal project explored capturing emotions through color and form.',
+
+        goal: 'Create an experimental illustration series that explores different visual atmospheres—some fluid and organic, others sharp and fragmented—without constraining to a single visual language.',
+
+        process: 'Embraced rapid experimentation and iteration. Each piece explored different compositions and color palettes, focusing on evoking distinct emotional responses rather than narrative content.',
+
+        deliverables: [
+            { type: 'image', src: 'projects/illustrations/illustration_1.jpg', caption: 'Fluid Forms Study' },
+            { type: 'image', src: 'projects/illustrations/illustration_2.jpg', caption: 'Color & Emotion' },
+            { type: 'image', src: 'projects/illustrations/illustration_3.jpg', caption: 'Abstract Composition' }
+        ],
+
+        outcome: 'Built a versatile visual library adaptable for social media, posters, and album covers. The series demonstrates range and experimental approach to visual design.',
+
         images: [
             'projects/illustrations/illustration_1.jpg',
             'projects/illustrations/illustration_2.jpg',
@@ -131,19 +197,38 @@ function openProjectModal(projectId) {
     currentProject = projectId;
     currentImages = project.images;
 
+    // Populate Case Study Header
     document.getElementById('modalProjectTitle').textContent = project.title;
-    document.getElementById('modalProjectDesc').textContent = project.description;
+    document.getElementById('modalSubtitle').textContent = project.subtitle;
+    document.getElementById('modalCategory').textContent = project.category;
+    document.getElementById('modalYear').textContent = project.year;
+    document.getElementById('modalDuration').textContent = project.duration;
+    document.getElementById('modalRole').textContent = project.role;
 
+    // Populate Tools
+    const toolsContainer = document.getElementById('modalTools');
+    toolsContainer.innerHTML = project.tools.map(tool =>
+        `<span class="tool-tag">${tool}</span>`
+    ).join('');
+
+    // Populate Case Study Content
+    document.getElementById('modalProblem').textContent = project.problem;
+    document.getElementById('modalGoal').textContent = project.goal;
+    document.getElementById('modalProcess').textContent = project.process;
+    document.getElementById('modalOutcome').textContent = project.outcome;
+
+    // Populate Gallery with Deliverables
     const gallery = document.getElementById('modalGallery');
     gallery.innerHTML = '';
 
-    project.images.forEach((imagePath, index) => {
-        const img = document.createElement('img');
-        img.src = imagePath;
-        img.alt = project.title;
-        img.loading = 'lazy';
-        img.onclick = () => openLightbox(index);
-        gallery.appendChild(img);
+    project.deliverables.forEach((item, index) => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item';
+        galleryItem.innerHTML = `
+            <img src="${item.src}" alt="${item.caption}" loading="lazy" onclick="openLightbox(${index})">
+            <span class="gallery-caption">${item.caption}</span>
+        `;
+        gallery.appendChild(galleryItem);
     });
 
     modal.style.display = 'block';

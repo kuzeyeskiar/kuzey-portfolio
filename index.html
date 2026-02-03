@@ -213,41 +213,66 @@
     </section>
 
     <section class="projects" id="projects">
-        <h2 class="heading">Latest <span>Projects</span></h2>
+        <h2 class="heading">Featured <span>Projects</span></h2>
+        <p class="section-subtitle">Case studies from recent client work</p>
 
         <div class="projects-container">
             <!-- Project 1 - Aurora Creative -->
-            <div class="project-box hidden" data-project="aurora" onclick="openProjectModal('aurora')">
-                <div class="project-layer">
-                    <h4>Aurora Creative</h4>
-                    <p>Brand identity design for a creative studio</p>
-                    <a href="#" onclick="event.preventDefault(); openProjectModal('aurora')"><i
-                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <article class="project-card hidden" data-project="aurora" onclick="openProjectModal('aurora')">
+                <div class="card-thumbnail">
+                    <img src="projects/aurora/aurora_1.png" alt="Aurora Creative" loading="lazy">
+                    <span class="card-category">Brand Design</span>
                 </div>
-                <div class="project-preview preview-1"></div>
-            </div>
+                <div class="card-content">
+                    <h3>Aurora Creative</h3>
+                    <p class="card-meta">2024 • Lead Designer</p>
+                    <p class="card-excerpt">Complete brand identity for a rising creative studio</p>
+                    <div class="card-tools">
+                        <span class="tool-tag">Illustrator</span>
+                        <span class="tool-tag">Photoshop</span>
+                        <span class="tool-tag">Blender</span>
+                    </div>
+                </div>
+                <button class="card-cta">View Case Study <i class="fa-solid fa-arrow-right"></i></button>
+            </article>
 
             <!-- Project 2 - JoySphere -->
-            <div class="project-box hidden" data-project="joysphere" onclick="openProjectModal('joysphere')">
-                <div class="project-layer">
-                    <h4>JoySphere Park</h4>
-                    <p>Complete brand identity for an entertainment center</p>
-                    <a href="#" onclick="event.preventDefault(); openProjectModal('joysphere')"><i
-                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <article class="project-card hidden" data-project="joysphere" onclick="openProjectModal('joysphere')">
+                <div class="card-thumbnail">
+                    <img src="projects/joysphere/joysphere_1.png" alt="JoySphere Park" loading="lazy">
+                    <span class="card-category">Brand Identity</span>
                 </div>
-                <div class="project-preview preview-2"></div>
-            </div>
+                <div class="card-content">
+                    <h3>JoySphere Park</h3>
+                    <p class="card-meta">2024 • Brand Designer</p>
+                    <p class="card-excerpt">Playful brand identity for an entertainment center</p>
+                    <div class="card-tools">
+                        <span class="tool-tag">Procreate</span>
+                        <span class="tool-tag">After Effects</span>
+                        <span class="tool-tag">Blender</span>
+                    </div>
+                </div>
+                <button class="card-cta">View Case Study <i class="fa-solid fa-arrow-right"></i></button>
+            </article>
 
             <!-- Project 3 - Illustrations -->
-            <div class="project-box hidden" data-project="illustrations" onclick="openProjectModal('illustrations')">
-                <div class="project-layer">
-                    <h4>Abstract Illustrations</h4>
-                    <p>Organic ink and watercolor artwork series</p>
-                    <a href="#" onclick="event.preventDefault(); openProjectModal('illustrations')"><i
-                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <article class="project-card hidden" data-project="illustrations"
+                onclick="openProjectModal('illustrations')">
+                <div class="card-thumbnail">
+                    <img src="projects/illustrations/illustration_1.jpg" alt="Abstract Illustrations" loading="lazy">
+                    <span class="card-category">Illustration</span>
                 </div>
-                <div class="project-preview preview-3"></div>
-            </div>
+                <div class="card-content">
+                    <h3>Abstract Illustrations</h3>
+                    <p class="card-meta">2023 • Illustrator</p>
+                    <p class="card-excerpt">Experimental art series exploring color and form</p>
+                    <div class="card-tools">
+                        <span class="tool-tag">Procreate</span>
+                        <span class="tool-tag">Photoshop</span>
+                    </div>
+                </div>
+                <button class="card-cta">View Case Study <i class="fa-solid fa-arrow-right"></i></button>
+            </article>
         </div>
     </section>
 
@@ -384,21 +409,63 @@
         </div>
     </section>
 
-    <!-- Project Modal -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
+    <!-- Case Study Modal -->
+    <div id="projectModal" class="modal case-study-modal">
+        <div class="modal-content cs-modal-content">
             <span class="close-modal" onclick="closeProjectModal()">&times;</span>
-            <div class="modal-header">
-                <h2 id="modalProjectTitle">Project Title</h2>
-                <p id="modalProjectDesc">Project Description</p>
-            </div>
-            <div class="modal-gallery" id="modalGallery">
-                <!-- Images will be dynamically loaded here -->
-            </div>
-            <div class="modal-nav">
-                <button class="modal-nav-btn" id="prevImage" onclick="changeImage(-1)">&#10094;</button>
-                <button class="modal-nav-btn" id="nextImage" onclick="changeImage(1)">&#10095;</button>
-            </div>
+
+            <!-- Case Study Header -->
+            <header class="cs-header">
+                <span class="cs-category" id="modalCategory">Brand Design</span>
+                <h1 class="cs-title" id="modalProjectTitle">Project Title</h1>
+                <p class="cs-subtitle" id="modalSubtitle">Project subtitle</p>
+                <div class="cs-meta">
+                    <span id="modalYear">2024</span> •
+                    <span id="modalDuration">4 weeks</span> •
+                    <span id="modalRole">Lead Designer</span>
+                </div>
+                <div class="cs-tools" id="modalTools">
+                    <!-- Tools will be dynamically loaded -->
+                </div>
+            </header>
+
+            <!-- Case Study Content -->
+            <section class="cs-content">
+                <!-- Problem & Goal -->
+                <div class="cs-block">
+                    <h2><i class="fa-solid fa-bullseye"></i> Problem & Goal</h2>
+                    <p id="modalProblem">Problem description...</p>
+                    <p id="modalGoal">Goal description...</p>
+                </div>
+
+                <!-- Process -->
+                <div class="cs-block">
+                    <h2><i class="fa-solid fa-gears"></i> Process</h2>
+                    <p id="modalProcess">Process description...</p>
+                </div>
+
+                <!-- Deliverables Gallery -->
+                <div class="cs-block">
+                    <h2><i class="fa-solid fa-images"></i> Deliverables</h2>
+                    <div class="cs-gallery" id="modalGallery">
+                        <!-- Images will be dynamically loaded -->
+                    </div>
+                </div>
+
+                <!-- Outcome -->
+                <div class="cs-block cs-outcome">
+                    <h2><i class="fa-solid fa-chart-line"></i> Results</h2>
+                    <p id="modalOutcome">Outcome description...</p>
+                </div>
+            </section>
+
+            <!-- Case Study Footer CTA -->
+            <footer class="cs-footer">
+                <h3>Interested in a similar project?</h3>
+                <a href="#contact" class="btn btn-primary" onclick="closeProjectModal()">
+                    <i class="fa-solid fa-paper-plane"></i> Get in Touch
+                </a>
+            </footer>
         </div>
     </div>
 
