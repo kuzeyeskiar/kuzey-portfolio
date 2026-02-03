@@ -339,17 +339,27 @@ if (contactForm) {
                 }
             });
 
+            const result = await response.json();
+
             if (response.ok) {
                 // Success
                 contactForm.style.display = 'none';
                 document.getElementById('formSuccess').style.display = 'flex';
             } else {
-                throw new Error('Form submission failed');
+                // Log the actual error
+                console.error('Formspree error:', result);
+                throw new Error(result.error || 'Form submission failed');
             }
         } catch (error) {
             console.error('Form error:', error);
-            contactForm.style.display = 'none';
-            document.getElementById('formError').style.display = 'flex';
+            // Try native submit as fallback
+            try {
+                contactForm.removeEventListener('submit', arguments.callee);
+                contactForm.submit();
+            } catch (fallbackError) {
+                contactForm.style.display = 'none';
+                document.getElementById('formError').style.display = 'flex';
+            }
         } finally {
             // Reset button
             btnText.style.display = 'inline-flex';
